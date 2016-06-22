@@ -17,6 +17,9 @@ public class Main {
 	public void run() {
 		bueblDrive driveRun = new bueblDrive();
 		driveRun.moveSequence();
+		FrontMotor frontMotor = new FrontMotor();
+		frontMotor.motorIntervall();
+		
 		
 	}
 

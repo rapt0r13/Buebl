@@ -4,7 +4,8 @@ import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
 
 public class Constants {
-
+	
+	final static Port FRONT_MOTOR = MotorPort.B;
 
 	public static double WHEEL_DIAMETER = 6.9;
 	public static double TRACK_WIDTH = 11.6;
