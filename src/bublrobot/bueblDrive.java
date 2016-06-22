@@ -1,17 +1,13 @@
 package bublrobot;
 
+import lejos.hardware.Sound;
 import lejos.hardware.motor.EV3LargeRegulatedMotor;
-import lejos.hardware.motor.UnregulatedMotor;
-import lejos.hardware.port.MotorPort;
-import lejos.hardware.port.Port;
-import lejos.robotics.RegulatedMotor;
+import lejos.robotics.navigation.*;
+import lejos.utility.Delay;
 
 public class bueblDrive {
 
-	final static int DRIVE_MOTOR_ACCELERATION = 200;
-	final static int DRIVE_MOTOR_SPEED = 100;
-	final static int REGULATED_MOTOR_POWER = 75;
-	final static Port DRIVE_MOTOR_PORT = MotorPort.C; //steering Motor C
+	
 	
 	
 	/**
@@ -19,7 +15,23 @@ public class bueblDrive {
 	 */
 	
 	public void moveForward() {
-		int degrees = Math.round(());
+		EV3LargeRegulatedMotor rightMotor = new EV3LargeRegulatedMotor(Constants.DRIVE_MOTOR_RIGHT);
+		EV3LargeRegulatedMotor leftMotor = new EV3LargeRegulatedMotor(Constants.DRIVE_MOTOR_LEFT);
+		Sound.beepSequence(); 
+		DifferentialPilot pilot = new DifferentialPilot(Constants.WHEEL_DIAMETER, 
+				Constants.WHEEL_DIAMETER, Constants.TRACK_WIDTH, leftMotor, rightMotor, true);
+		Sound.beepSequence(); 
+		 pilot.travel(50);         // cm
+		 pilot.rotate(-90);        // degree clockwise
+		 pilot.travel(-50,true);  //  move backward for 50 cm
+		 while(pilot.isMoving())Thread.yield();
+		 pilot.rotate(-90);
+		 pilot.rotate(270);
+		 pilot.steer(-50,180,true); // turn 180 degrees to the right
+
+		 pilot.steer(100);          // turns with left wheel stationary
+		 Delay.msDelay(1000);
+		 pilot.stop();
 	}
 	
 }
