@@ -16,7 +16,7 @@ public class Main {
 	
 	public void run() {
 		bueblDrive driveRun = new bueblDrive();
-		driveRun.moveForward();
+		driveRun.moveSequence();
 		
 	}
 
