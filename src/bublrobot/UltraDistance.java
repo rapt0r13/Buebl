@@ -2,6 +2,8 @@ package bublrobot;
 
 
 
+
+
 import lejos.hardware.Sound;
 import lejos.hardware.port.Port;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
@@ -15,6 +17,7 @@ import lejos.robotics.objectdetection.RangeFeatureDetector;
 public class UltraDistance {
 	
 	bueblDrive bueblDrive;
+	FrontMotor frontMotor;
 	
 	/**
 	 * Initialize ultraDistance with prepared bueblDrive objects
@@ -24,8 +27,11 @@ public class UltraDistance {
 	public UltraDistance (bueblDrive bueblDrive) {
 		this.bueblDrive = bueblDrive;
 		
-	}
 
+	}
+		
+	
+	
 	/**
 	 * Enables a Feature of the Ultrasonic Sensor
 	 * @param port of the touch Sensor like SensorPort.S1
@@ -70,22 +76,28 @@ private class UltraSonicFeatureListener implements FeatureListener {
 	public void featureDetected (Feature feature, FeatureDetector detector) {
 		
 		//how far away is the detected feature?
-		float range = feature.getRangeReading().getRange();
+		float range = feature.getRangeReading().getRange(); 
 		
 		//play a tone and display detected feature's distance
-		Sound.playTone((int)(200+(range * 1000)),100);
 		System.out.println ("Range:"+ range);
-		if (range <= 0.984251968503937) {
+		if (1000*range <= 400) {
 			bueblDrive.stop();
-			bueblDrive.moveTurn(30);
+			Sound.buzz();
+			bueblDrive.rotateDiffAngle();
+			//frontMotor.clean();
 		}
-		else{
+		else {
 			bueblDrive.moveStraightForever();
+			//frontMotor.clean();
 		}
+			
+		
+		}
+		
 		
 	}
 	 
 }
 
 
-}
+

@@ -6,13 +6,18 @@ import lejos.utility.Delay;
 public class FrontMotor {
 
 	
-	UnregulatedMotor frontMotor ;
+
 	
-	public void initialize() {
 		UnregulatedMotor frontMotor = new UnregulatedMotor(Constants.FRONT_MOTOR);
 		
-	}
 	
+	
+	
+	public void clean() {
+		frontMotor.forward();
+		Delay.msDelay(1000);
+		frontMotor.flt();
+	}
 	public void motorIntervall() {
 		while (1==1) {
 			frontMotor.forward();

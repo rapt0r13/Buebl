@@ -25,7 +25,6 @@ public class Main {
 		FrontMotor frontMotor = new FrontMotor();
 		UltraDistance us = new UltraDistance(pilot);
 		LCD.drawString("Initializing", 0, 0);
-		Delay.msDelay(1000);
 		us.initializeFeatures();
 
 		//pilot.moveStraight(2000);
