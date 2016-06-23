@@ -44,15 +44,27 @@ public class bueblDrive {
 		 
 	}
 	
-	public void moveStraight() {
+	public void moveStraightForever() {
 		while(1 == 1 ) {
 			pilot.travel(999999999);
 		}
 		}
+	
+	public void moveStraight(double distance) {
+		pilot.travel(distance);
+	}
 		
-	public void moveTurn() {
-		pilot.rotate(10);
+	public void moveTurn(double degree) {
+		pilot.rotate(degree);
 		}
+	
+	public void stop() {
+		pilot.stop();
+		
+	}
+	
+	
+	
 			
 
 		

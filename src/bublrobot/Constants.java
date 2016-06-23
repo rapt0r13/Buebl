@@ -2,6 +2,7 @@ package bublrobot;
 
 import lejos.hardware.port.MotorPort;
 import lejos.hardware.port.Port;
+import lejos.hardware.port.SensorPort;
 
 public class Constants {
 	
@@ -16,6 +17,11 @@ public class Constants {
 	final static Port DRIVE_MOTOR_RIGHT = MotorPort.D; //steering Motor C
 	final static Port DRIVE_MOTOR_LEFT = MotorPort.A;
 	
+	
+	//ultrasonic sensor and listener
+	public static final float MAX_DISTANCE =100f;
+	public static final int DETECTOR_DELAY = 1000;
+	final static Port ULTRA_SONIC_SENSOR_PORT = SensorPort.S2;
 		 
 	}
 
